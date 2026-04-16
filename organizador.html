@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel Organizador</title>
+    <link rel="stylesheet" href="Estilos/Adminnistracion_styles.css">
+</head>
+<body>
+
+<header>
+    <h2>📋 Panel del Organizador</h2>
+    <a href="index.html">Inicio</a>
+</header>
+
+<h3>Mis Actividades</h3>
+<div id="actividades"></div>
+
+<h3>Inscritos</h3>
+<div id="inscritos"></div>
+
+<script src="Scripts/db.js"></script>
+<script src="Scripts/organizador.js"></script>
+
+<script>
+inicializarDB();
+
+// Validar sesión
+const usuario = JSON.parse(localStorage.getItem("usuarioActual"));
+
+if (!usuario || usuario.rol !== "organizador") {
+    alert("Acceso no autorizado");
+    window.location.href = "login.html";
+}
+
+cargarActividadesOrganizador();
+</script>
+
+</body>
+</html>

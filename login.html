@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="estilos/login_style.css">
+</head>
+<body>
+
+<div class="divLogin">
+    <h2>Iniciar Sesión</h2>
+
+    <input type="email" id="correo" placeholder="Correo">
+    <input type="password" id="password" placeholder="Contraseña">
+
+    <p>aun no cuentas con una cuenta? <a href="registro.html">Regístrate aquí</a></p>
+
+    <button onclick="iniciarSesion()">Entrar</button>
+
+    <p id="error" class="error"></p>
+
+    <a href="index.html">Volver</a>
+</div>
+
+<script src="Scripts/db.js"></script>
+<script src="Scripts/auth.js"></script>
+
+<script src="Scripts/login.js"></script>
+
+</body>
+</html>

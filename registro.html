@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <link rel="stylesheet" href="estilos/login_style.css">
+</head>
+<body>
+
+<div class="divLogin">
+
+    <h2>Registro de Usuario</h2>
+
+    <input type="text" id="nombre" placeholder="Nombre completo">
+    <input type="email" id="correo" placeholder="Correo electrónico">
+    <input type="password" id="password" placeholder="Contraseña">
+
+    <button onclick="registrarUsuario()">Registrarse</button>
+
+    
+    <p id="mensaje" class="error"></p>
+
+    <p>¿Ya tienes una cuenta?<a href="login.html"> Inicia sesión</a></p>
+
+</div>
+
+<script src="Scripts/db.js"></script>
+<script src="Scripts/auth.js"></script>
+<script src="Scripts/registro.js"></script>
+
+<script>
+inicializarDB();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Panel Administrador</title>
+    <link rel="stylesheet" href="Estilos/Adminnistracion_styles.css">
+</head>
+
+<body>
+    <div class="divPricipal">
+        <header>
+            <h2>⚙️ Panel de Administrador</h2>
+            <a href="index.html">Inicio</a>
+        </header>
+
+        
+        <div id="divListado">
+                <h3>Lista de Actividades</h3>
+        </div>
+
+
+        <div class="divFormulario">
+            <h3>Crear / Editar Actividad</h3>
+            <input type="hidden" id="idActividad">
+
+            <input type="text" id="nombre" placeholder="Nombre">
+            <input type="text" id="descripcion" placeholder="Descripción">
+            <input type="number" id="cupo" placeholder="Cupo">
+
+            <select id="organizador"></select>
+
+            <button onclick="guardarActividad()">Guardar</button>
+        </div>
+
+
+        
+    </div>
+
+
+    <script src="Scripts/db.js"></script>
+    <script src="Scripts/admin.js"></script>
+
+    <script>
+        inicializarDB();
+
+        // Validar acceso
+        const usuario = JSON.parse(localStorage.getItem("usuarioActual"));
+
+        if (!usuario || usuario.rol !== "administrador") {
+            alert("Acceso no autorizado");
+            window.location.href = "login.html";
+        }
+
+        // Cargar datos
+        cargarOrganizadores();
+        mostrarActividades();
+    </script>
+
+</body>
+
+</html>

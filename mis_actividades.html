@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Actividades</title>
+    <link rel="stylesheet" href="Estilos/actividades_style.css">
+</head>
+<body>
+
+<header>
+    <h2>📌 Mis Actividades</h2>
+    <a href="catalogo.html">Volver al catálogo</a>
+</header>
+
+<div id="lista"></div>
+
+<script src="Scripts/db.js"></script>
+<script src="Scripts/misActividades.js"></script>
+
+<script>
+// Inicializar datos
+inicializarDB();
+
+// Validar sesión
+const usuario = JSON.parse(localStorage.getItem("usuarioActual"));
+
+if (!usuario) {
+    window.location.href = "login.html";
+}
+
+// Cargar actividades del usuario
+cargarMisActividades();
+</script>
+
+</body>
+</html>

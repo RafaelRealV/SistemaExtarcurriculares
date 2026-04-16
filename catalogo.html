@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo</title>
+    <link rel="stylesheet" href="Estilos/catalogo_style.css">
+</head>
+<body>
+
+<header>
+    <h2>📋 Catálogo de Actividades</h2>
+    <a href="index.html">Inicio</a>
+</header>
+
+<div id="lista"></div>
+
+<script src="Scripts/db.js"></script>
+<script src="Scripts/catalogo.js"></script>
+<script src="Scripts/Inscripcion.js"></script>
+
+<script>
+// Inicializar datos
+inicializarDB();
+
+// Verificar sesión
+const usuario = JSON.parse(localStorage.getItem("usuarioActual"));
+
+if (!usuario) {
+    alert("Debes iniciar sesión");
+    window.location.href = "login.html";
+}
+
+// Cargar actividades
+mostrarActividades();
+</script>
+
+</body>
+</html>
