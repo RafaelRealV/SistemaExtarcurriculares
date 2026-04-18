@@ -8,33 +8,47 @@
 </head>
 
 <body>
-    <div class="divPricipal">
-        <header>
-            <h2>⚙️ Panel de Administrador</h2>
-            <a href="index.html">Inicio</a>
-        </header>
-
-        
-        <div id="divListado">
-                <h3>Lista de Actividades</h3>
+    <div class="divAdministracion">
+        <div id="divBarraLateral">
+            <h3>Lista de Actividades</h3>
+            <nav>
+                <a href="#">Actividades</a>
+                <a href="#">Organizadores</a>
+                <a href="#">Alumnos</a>
+                <a href="#">Inicio</a>
+            </nav>
         </div>
 
+        <div id="divPrincipal">
 
-        <div class="divFormulario">
-            <h3>Crear / Editar Actividad</h3>
-            <input type="hidden" id="idActividad">
+            <header>
+                <h2>⚙️ Panel de Administrador</h2>
+                <a href="index.html">Inicio</a>
+            </header>
 
-            <input type="text" id="nombre" placeholder="Nombre">
-            <input type="text" id="descripcion" placeholder="Descripción">
-            <input type="number" id="cupo" placeholder="Cupo">
+            <div class="contenido">
+                
+                <div id="divListado" class="cartaActividad">
+                    <h3>Actividades Registradas</h3>
+                </div>
 
-            <select id="organizador"></select>
+                <div class="divFormulario">
+                    <h3>Crear / Editar Actividad</h3>
+                    <input type="hidden" id="idActividad">
 
-            <button onclick="guardarActividad()">Guardar</button>
+                    <input type="text" id="nombre" placeholder="Nombre">
+                    <input type="text" id="descripcion" placeholder="Descripción">
+                    <input type="number" id="cupo" placeholder="Cupo">
+
+                    <select id="organizador"></select>
+
+                    <button onclick="guardarActividad()">Guardar</button>
+                </div>
+
+            </div>
+
+
         </div>
-
-
-        
     </div>
 
 
