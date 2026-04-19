@@ -6,7 +6,10 @@ function inicializarDB() {
             { id: 2, nombre: "Profe", correo: "profe@test.com", password: "1234", rol: "organizador" }
         ];
         localStorage.setItem("usuarios", JSON.stringify(usuarios));
+        
+
     }
+    //localStorage.removeItem("usuarios");
 
     if (!localStorage.getItem("actividades")) {
         const actividades = [

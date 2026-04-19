@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Administrador</title>
     <link rel="stylesheet" href="Estilos/Adminnistracion_styles.css">
 </head>
-
 <body>
     <div class="divAdministracion">
         <div id="divBarraLateral">
             <h3>Lista de Actividades</h3>
             <nav>
-                <a href="#">Actividades</a>
+                <a href="administrador.html">Actividades</a>
                 <a href="adminOrganizador.html">Organizadores</a>
-                <a href="#">Alumnos</a>
+                <a href="adminAlumnos.html">Alumnos</a>
                 <a href="#">Inicio</a>
             </nav>
         </div>
@@ -29,33 +28,27 @@
             <div class="contenido">
                 
                 <div id="divListado" class="cartaActividad">
-                    <h3>Actividades Registradas</h3>
+                    <h3>Sin Alumnos</h3>
                 </div>
 
                 <div class="divFormulario">
-                    <h3>Crear / Editar Actividad</h3>
-                    <input type="hidden" id="idActividad">
+                    <h3>Crear / Editar Alumno</h3>
+                    <input type="hidden" id="idAlumno">
 
                     <input type="text" id="nombre" placeholder="Nombre">
-                    <input type="text" id="descripcion" placeholder="Descripción">
-                    <input type="number" id="cupo" placeholder="Cupo">
+                    <input type="text" id="correo" placeholder="correo">
+                    <input type="password" id="password" placeholder="Contraseña">
 
-                    <select id="organizador"></select>
-
-                    <button onclick="guardarActividad()">Guardar</button>
+                    <button onclick="guardarAlumno()">Guardar</button>
                 </div>
-
             </div>
-
-
         </div>
     </div>
-
 
     <script src="Scripts/db.js"></script>
     <script src="Scripts/admin.js"></script>
 
-    <script>
+     <script>
         inicializarDB();
 
         // Validar acceso
@@ -63,14 +56,11 @@
 
         if (!usuario || usuario.rol !== "administrador") {
             alert("Acceso no autorizado");
-            window.location.href = "login.html";
+            window.location.href = "index.html";
         }
-
-        // Cargar datos
-        cargarOrganizadores();
-        mostrarActividades();
+        listaAlumnos();
     </script>
-
+    
+    
 </body>
-
 </html>
