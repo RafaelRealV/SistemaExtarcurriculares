@@ -275,5 +275,116 @@ nav a.log:hover {
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: 18px;
 }
+.card {
+    background: var(--blanco);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--gris-borde);
+    transition: transform 0.2s;
+}
+.card:hover {
+    transform: translateY(-4px);
+}
+.card-banner {
+    height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    position: relative;
+}
+.card-banner.deporte  { background: var(--verde-fondo); }
+.card-banner.arte     { background: var(--naranja-claro); }
+.card-banner.cultura  { background: #e0f4f4; }
+.card-banner.ciencia  { background: #f0edf8; }
+.card-banner.musica   { background: #fff3e0; }
+.card-banner.default  { background: var(--verde-fondo); }
+
+.cupos-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--naranja-fuerte);
+    color: var(--blanco);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 20px;
+}
+.cupos-badge.lleno {
+    background: #aaa;
+}
+.card-body {
+    padding: 14px 16px 18px;
+}
+.card-tag {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--verde-medio);
+    margin-bottom: 5px;
+}
+.card-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--gris-texto);
+    margin-bottom: 9px;
+    line-height: 1.3;
+}
+.card-meta {
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+.inscribirse-btn {
+    width: 100%;
+    background: var(--verde-fondo);
+    color: var(--verde-oscuro);
+    border: 1.5px solid var(--verde-menta);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 10px;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+}
+.inscribirse-btn:hover {
+    background: var(--verde-claro);
+    color: var(--blanco);
+    border-color: var(--verde-claro);
+}
+.inscribirse-btn.lleno {
+    background: #f0f0f0;
+    color: #bbb;
+    border-color: #e0e0e0;
+    cursor: not-allowed;
+}
+
+/*
+
+----   FOOTER     ----
+
+*/
+footer {
+    background: var(--verde-oscuro);
+    color: rgba(255, 255, 255, 0.45);
+    text-align: center;
+    padding: 28px 2rem;
+    font-size: 13px;
+    margin-top: 24px;
+}
+footer span {
+    color: var(--naranja-medio);
+    font-weight: 700;
+}
 
 
