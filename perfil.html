@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extracurriculares</title>
+   
+    <link rel="stylesheet" href="Estilos/index_style.css">
+    <link rel="stylesheet" href="estilos/perfil_style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+    <header>
+        <div class="logo">
+            <div class="icono">
+                <img src="img/logo Bordeado.png" alt="">
+            </div>
+
+            <div>
+                <div class="logo-texto">Extracurriculares</div>
+                <div class="logo-subtexto">UNISIERRA</div>
+            </div>
+        </div>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="catalogo.html">Actividades</a>
+           <button onclick="cerrrarSesion" class="btn-cerrar">Cerrar Sesion</button>
+
+        </nav>
+    </header>
+
+<!-- CONTENIDO PRINCIPAL -->
+<main class="perfil-layout">
+
+    <!-- COLUMNA IZQUIERDA: tarjeta de usuario -->
+    <aside class="perfil-aside">
+
+        <!-- Avatar + datos principales -->
+        <div class="perfil-card">
+            <div class="avatar" id="avatar-inicial"></div>
+            <div class="perfil-nombre" id="perfil-nombre">—</div>
+            <div class="perfil-rol"   id="perfil-rol">—</div>
+            <div class="perfil-mat"   id="perfil-matricula">—</div>
+
+            <div class="perfil-stats">
+                <div class="pstat">
+                    <span class="pstat-num" id="stat-inscritas">0</span>
+                    <span class="pstat-label">Actividades</span>
+                </div>
+                <div class="pstat">
+                    <span class="pstat-num" id="stat-asistencias">0</span>
+                    <span class="pstat-label">Asistencias</span>
+                </div>
+            </div>
+
+            <button class="btn-editar" id="btn-editar-perfil">✏️ Editar perfil</button>
+            <button class="btn-logout" onclick="cerrarSesion()">Cerrar sesión</button>
+        </div>
+
+        <!-- Mini menú lateral -->
+        <nav class="perfil-nav">
+            <button class="pnav-btn active" data-tab="actividades">📋 Mis actividades</button>
+            <button class="pnav-btn" data-tab="asistencias">✅ Mis asistencias</button>
+            <button class="pnav-btn" data-tab="editar">⚙️ Editar datos</button>
+        </nav>
+
+    </aside>
+
+    <!-- COLUMNA DERECHA: contenido de tabs -->
+    <section class="perfil-contenido">
+
+        <!-- TAB: Actividades inscritas -->
+        <div class="tab-panel active" id="tab-actividades">
+            <div class="panel-header">
+                <h2 class="panel-title">Mis actividades inscritas</h2>
+            </div>
+            <div id="lista-actividades"></div>
+        </div>
+
+        <!-- TAB: Historial de asistencias -->
+        <div class="tab-panel" id="tab-asistencias">
+            <div class="panel-header">
+                <h2 class="panel-title">Historial de asistencias</h2>
+            </div>
+            <div id="lista-asistencias"></div>
+        </div>
+
+        <!-- TAB: Editar datos -->
+        <div class="tab-panel" id="tab-editar">
+            <div class="panel-header">
+                <h2 class="panel-title">Editar mis datos</h2>
+            </div>
+
+            <form id="form-editar" novalidate>
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="edit-nombre">Nombre completo</label>
+                        <input type="text" id="edit-nombre" placeholder="Tu nombre">
+                        <span class="input-error" id="err-nombre"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-correo">Correo electrónico</label>
+                        <input type="email" id="edit-correo" placeholder="correo@escuela.com">
+                        <span class="input-error" id="err-correo"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-matricula">Matrícula</label>
+                        <input type="text" id="edit-matricula" placeholder="Tu matrícula" disabled>
+                        <span class="form-hint">La matrícula no se puede cambiar.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-password">Nueva contraseña</label>
+                        <div class="input-pass-wrap">
+                            <input type="password" id="edit-password" placeholder="Dejar vacío para no cambiar">
+                            <button type="button" class="toggle-pass" id="toggle-pass-perfil">👁</button>
+                        </div>
+                        <span class="input-error" id="err-password"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-password2">Confirmar contraseña</label>
+                        <div class="input-pass-wrap">
+                            <input type="password" id="edit-password2" placeholder="Repite la nueva contraseña">
+                            <button type="button" class="toggle-pass" id="toggle-pass2-perfil">👁</button>
+                        </div>
+                        <span class="input-error" id="err-password2"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-guardar">Guardar cambios</button>
+                    <button type="button" class="btn-cancelar" id="btn-cancelar-editar">Cancelar</button>
+                </div>
+            </form>
+        </div>
+
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 <span>Sistema Escolar</span></p>
+</footer>
+
+<script src="Scripts/db.js"></script>
+<script src="Scripts/perfil.js"></script>
+
+</body>
+</html>

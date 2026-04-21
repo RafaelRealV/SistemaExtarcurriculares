@@ -107,6 +107,7 @@ function obtenerRolSeleccionado() {
 function redirigirPorRol(rol) {
     switch (rol) {
         case "administrador":
+            window.location.href = "administrator.html"
         case "organizador":
             window.location.href = "organizador.html";
             break;

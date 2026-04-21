@@ -205,7 +205,7 @@ function actualizarNavCatalogo() {
     const nav    = document.querySelector("nav");
     if (!nav || !sesion) return;
 
-    const linkCta = nav.querySelector("a.cta");
+    const linkCta = nav.querySelector("a.log");
     if (linkCta) {
         linkCta.textContent = sesion.nombre.split(" ")[0];
         linkCta.href = sesion.rol === "alumno" ? "perfil.html" : "organizador.html";
