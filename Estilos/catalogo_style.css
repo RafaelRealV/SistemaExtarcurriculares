@@ -1,18 +1,210 @@
-#lista {
-    padding: 20px;
+:root {
+    --verde-oscuro:  #1a4a2e;
+    --verde-medio:   #2d7a4f;
+    --verde-claro:   #4caf7d;
+    --verde-menta:   #a8dfc0;
+    --verde-fondo:   #eef7f2;
+    --naranja-fuerte:#e07b2a;
+    --naranja-medio: #f0a050;
+    --naranja-claro: #fde9d0;
+    --blanco:        #ffffff;
+    --gris-texto:    #3a3a3a;
+    --gris-suave:    #f8f8f6;
+    --gris-borde:    rgba(0, 0, 0, 0.07);
+}
+
+
+
+.barra-herramientas {
+    background-color: var(--blanco);
+    border-bottom: 1px solid var(--gris-borde);
+    padding: 14px 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 64px;
+    z-index: 90;
+}
+.seccion-busqueda {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--gris-suave);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 9px;
+    padding: 9px 14px;
+    min-width: 220px;
+    flex: 1;
+    max-width: 360px;
+}
+.icon-busqueda{
+    font-size: 14px;
+    color: #bbb;
+}
+.seccion-busqueda input{
+    border:none;
+    background: transparent;
+    font-size: 14px;
+    color: var(--gris-texto);
+    outline: none;
+    width: 100%;
+}
+.seccion-busqueda input::placeholder {
+    color: #bbb;
+}
+.filtros{
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+.filter-btn{
+    background-color: var(--gris-suave);
+    color: #888;
+    border: 1.5px solid transparent;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 7px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .2s;
+}
+.filter-btn:hover{
+    background-color: var(--verde-fondo);
+    color: var(--verde-medio);
+    border-color: var(--verde-menta);
+}
+.filter-btn.active{
+    background-color: var(--verde-medio);
+    color: #fff;
+    border-color: var(--verde-medio);
+}
+
+/*
+cuerpo del catalogo
+*/
+.cat-body {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 40px 2.5rem 60px;
+}
+.cat-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.cat-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--verde-oscuro);
+}
+.cat-sub {
+    font-size: 13px;
+    color: #aaa;
+    margin-top: 4px;
+}
+
+/*
+----------------CARTAS-----------
+*/
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 18px;
 }
 
 .card {
-    background: white;
-    padding: 15px;
-    margin: 15px;
-    border-radius: 10px;
+    background: var(--blanco);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--gris-borde);
+    transition: transform .2s;
 }
 
-.card button {
-    background: #2ecc71;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
+.card:hover { transform: translateY(-4px); }
+
+.card-banner {
+    height: 82px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 34px; position: relative;
 }
+
+/* Colores de banner por categoría */
+.card-banner.deporte { background: var(--verde-fondo); }
+.card-banner.arte    { background: var(--naranja-claro); }
+.card-banner.cultura { background: #e0f4f4; }
+.card-banner.ciencia { background: #f0edf8; }
+.card-banner.musica  { background: #fff3e0; }
+.card-banner.default { background: var(--verde-fondo); }
+
+.cupos-badge {
+    position: absolute; top: 10px; right: 10px;
+    background: var(--naranja-fuerte);
+    color: #fff; font-size: 10px; font-weight: 700;
+    padding: 3px 9px; border-radius: 20px;
+}
+
+.cupos-badge.lleno { background: #aaa; }
+
+.card-body { padding: 13px 15px 16px; }
+
+.card-tag {
+    display: block; font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: var(--verde-medio); margin-bottom: 4px;
+}
+
+.card-title {
+    font-size: 15px; font-weight: 800;
+    color: var(--gris-texto); margin-bottom: 8px; line-height: 1.3;
+}
+
+.card-desc {
+    font-size: 12px; color: #aaa;
+    margin-bottom: 10px; line-height: 1.5;
+}
+
+.card-meta {
+    display: flex; gap: 8px; font-size: 12px;
+    color: #aaa; margin-bottom: 13px; flex-wrap: wrap;
+}
+
+.inscribirse-btn {
+    width: 100%;
+    background: var(--verde-fondo);
+    color: var(--verde-oscuro);
+    border: 1.5px solid var(--verde-menta);
+    font-family: 'Nunito', sans-serif; font-weight: 700;
+    font-size: 13px; padding: 10px; border-radius: 9px;
+    cursor: pointer; transition: all .2s; text-align: center;
+}
+
+.inscribirse-btn:hover {
+    background: var(--verde-claro);
+    color: #fff; border-color: var(--verde-claro);
+}
+
+.inscribirse-btn.inscrito {
+    background: var(--verde-medio);
+    color: #fff; border-color: var(--verde-medio);
+    cursor: default;
+}
+
+.inscribirse-btn.lleno {
+    background: #f0f0f0; color: #bbb;
+    border-color: #e0e0e0; cursor: not-allowed;
+}
+
+/* Sin resultados */
+.sin-resultados {
+    text-align: center; padding: 60px 20px;
+    color: #bbb;
+}
+
+.sin-resultados span { font-size: 40px; display: block; margin-bottom: 12px; }
+.sin-resultados p { font-size: 15px; }
+

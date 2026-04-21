@@ -1,38 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Catálogo</title>
+    <title>Extracurriculares</title>
+    <link rel="stylesheet" href="Estilos/index_style.css">
     <link rel="stylesheet" href="Estilos/catalogo_style.css">
 </head>
+
 <body>
 
-<header>
-    <h2>📋 Catálogo de Actividades</h2>
-    <a href="index.html">Inicio</a>
-</header>
+    <header>
+        <div class="logo">
+            <div class="icono">
+                <img src="img/logo Bordeado.png" alt="">
+            </div>
 
-<div id="lista"></div>
+            <div>
+                <div class="logo-texto">Extracurriculares</div>
+                <div class="logo-subtexto">UNISIERRA</div>
+            </div>
+        </div>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="catalogo.html">Actividades</a>
+            <a href="login.html" class="log">Iniciar Sesión</a>
 
-<script src="Scripts/db.js"></script>
-<script src="Scripts/catalogo.js"></script>
-<script src="Scripts/Inscripcion.js"></script>
+        </nav>
+    </header>
 
-<script>
-// Inicializar datos
-inicializarDB();
+    <!barra de buqueda>
+        <div class="barra-herramientas">
+            <div class="seccion-busqueda">
+                <span class="icon-busqueda">🔍</span>
+                <input type="text" id="buscador" placeholder="Buscar Actividad.....">
+            </div>
+            <div class="filtros" id="filtros">
+                <button class="filter-btn active" data-cat="todas">Todas</button>
+                <button class="filter-btn" data-cat="deporte">Deporte</button>
+                <button class="filter-btn" data-cat="arte">Arte</button>
+                <button class="filter-btn" data-cat="ciencia">Ciencia</button>
+                <button class="filter-btn" data-cat="cultura">Cultura</button>
+                <button class="filter-btn" data-cat="musica">Musica</button>
+            </div>
+        </div>
 
-// Verificar sesión
-const usuario = JSON.parse(localStorage.getItem("usuarioActual"));
+        <! contenido principal>
+            <main class="cat-body">
+                <div class="cat-header">
+                    <div>
+                        <h1 class="cat-title">Catalogo de actividades</h1>
+                        <p class="cat-sub" id="conteo">Cargando actividades......</p>
+                    </div>
+                </div>
 
-if (!usuario) {
-    alert("Debes iniciar sesión");
-    window.location.href = "login.html";
-}
 
-// Cargar actividades
-mostrarActividades();
-</script>
+                <div id="catalogo" class="cards-grid"></div>
+
+                <!-- Mensaje si no hay resultados -->
+                <div id="sin-resultados" class="sin-resultados" style="display:none;">
+                    <span>😕</span>
+                    <p>No se encontraron actividades con ese filtro.</p>
+                </div>
+            </main>
+            <!-- FOOTER -->
+            <footer>
+                <p>© 2026 <span>Sistema Escolar</span></p>
+            </footer>
+
+            <script src="Scripts/db.js"></script>
+            <script src="Scripts/catalogo.js"></script>
+            <script src="Scripts/Inscripcion.js"></script>
+
+           <!-- <script>
+                // Inicializar datos
+                inicializarDB();
+
+                // Verificar sesión
+                const usuario = JSON.parse(localStorage.getItem("sec_sesion"));
+
+                if (!usuario) {
+                    alert("Debes iniciar sesión");
+                    window.location.href = "login.html";
+                }
+
+                // Cargar actividades
+                mostrarActividades();
+            </script>
+            -->
 
 </body>
+
 </html>
