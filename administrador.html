@@ -1,76 +1,220 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
-    <title>Panel Administrador</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrador · Sistema Escolar</title>
     <link rel="stylesheet" href="Estilos/Adminnistracion_styles.css">
 </head>
-
 <body>
-    <div class="divAdministracion">
-        <div id="divBarraLateral">
-            <h3>Lista de Actividades</h3>
-            <nav>
-                <a href="#">Actividades</a>
-                <a href="adminOrganizador.html">Organizadores</a>
-                <a href="#">Alumnos</a>
-                <a href="#">Inicio</a>
-            </nav>
+
+<div class="admin-layout">
+
+    <!-- ═══ SIDEBAR ═══ -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-icon"><img src="img/logo Bordeado.png" alt=""></div>
+            <div>
+                <span class="logo-text">Extracurriculares</span>
+                <span class="logo-sub">Administrador</span>
+            </div>
         </div>
 
-        <div id="divPrincipal">
+        <nav class="sidebar-nav">
+            <button class="snav-btn active" data-seccion="actividades">
+                <span>🏃</span> Actividades
+            </button>
+            <button class="snav-btn" data-seccion="organizadores">
+                <span>👨‍🏫</span> Organizadores
+            </button>
+            <button class="snav-btn" data-seccion="alumnos">
+                <span>🎒</span> Alumnos
+            </button>
+            <button class="snav-btn" data-seccion="reportes">
+                <span>📊</span> Reportes globales
+            </button>
+        </nav>
 
-            <header>
-                <h2>⚙️ Panel de Administrador</h2>
-                    <button id="btnCerrarSesion" onclick="cerrarSesion()">Cerrar Sesión</button>
-            </header>
+        <div class="sidebar-footer">
+            <div class="sidebar-user">
+                <div class="su-avatar" id="sb-avatar">A</div>
+                <div>
+                    <span class="su-nombre" id="sb-nombre">—</span>
+                    <span class="su-rol">Administrador</span>
+                </div>
+            </div>
+            <button class="btn-logout-sb" onclick="cerrarSesion()">Salir →</button>
+        </div>
+    </aside>
 
-            <div class="contenido">
-                
-                <div id="divListado" class="cartaActividad">
-                    <h3>Actividades Registradas</h3>
+    <!-- ═══ MAIN ═══ -->
+    <main class="admin-main">
+
+        <header class="admin-header">
+            <div>
+                <h1 class="admin-titulo"    id="titulo-seccion">Actividades</h1>
+                <p  class="admin-subtitulo" id="sub-seccion">Gestiona las actividades extracurriculares</p>
+            </div>
+            <button class="btn-logout-header" onclick="cerrarSesion()">Cerrar sesión</button>
+        </header>
+
+        <!-- ══ ACTIVIDADES ══ -->
+        <section class="seccion active" id="sec-actividades">
+            <div class="panel-split">
+
+                <div class="panel-lista">
+                    <h3 class="panel-h3">📋 Actividades registradas</h3>
+                    <div id="divListado"></div>
                 </div>
 
-                <div class="divFormulario">
-                    <h3>Crear / Editar Actividad</h3>
+                <div class="panel-form">
+                    <h3 class="panel-h3" id="form-act-titulo">➕ Nueva actividad</h3>
                     <input type="hidden" id="idActividad">
 
-                    <input type="text" id="nombre" placeholder="Nombre">
-                    <input type="text" id="descripcion" placeholder="Descripción">
-                    <input type="number" id="cupo" placeholder="Cupo">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" id="nombre" placeholder="Ej. Fútbol Varonil">
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <textarea id="descripcion" placeholder="Breve descripción..." rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Cupo máximo</label>
+                        <input type="number" id="cupo" placeholder="Ej. 20" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label>Categoría</label>
+                        <select id="categoria">
+                            <option value="deporte">🏃 Deporte</option>
+                            <option value="arte">🎨 Arte</option>
+                            <option value="ciencia">🔬 Ciencia</option>
+                            <option value="cultura">🎭 Cultura</option>
+                            <option value="musica">🎸 Música</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Días</label>
+                        <input type="text" id="dias" placeholder="Ej. Lun · Mié">
+                    </div>
+                    <div class="form-group">
+                        <label>Hora</label>
+                        <input type="text" id="hora" placeholder="Ej. 4:00 PM">
+                    </div>
+                    <div class="form-group">
+                        <label>Organizador</label>
+                        <select id="organizador"></select>
+                    </div>
 
-                    <select id="organizador"></select>
+                    <div class="form-actions">
+                        <button class="btn-guardar" onclick="guardarActividad()">Guardar</button>
+                        <button class="btn-limpiar" onclick="limpiarFormulario()">Limpiar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <button onclick="guardarActividad()">Guardar</button>
+        <!-- ══ ORGANIZADORES ══ -->
+        <section class="seccion" id="sec-organizadores">
+            <div class="panel-split">
+
+                <div class="panel-lista">
+                    <h3 class="panel-h3">📋 Organizadores registrados</h3>
+                    <div id="divListadoOrg"></div>
                 </div>
 
+                <div class="panel-form">
+                    <h3 class="panel-h3" id="form-org-titulo">➕ Nuevo organizador</h3>
+                    <input type="hidden" id="idOrganizador">
+
+                    <div class="form-group">
+                        <label>Nombre completo</label>
+                        <input type="text" id="org-nombre" placeholder="Nombre del organizador">
+                    </div>
+                    <div class="form-group">
+                        <label>Correo</label>
+                        <input type="email" id="org-correo" placeholder="correo@escuela.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Matrícula</label>
+                        <input type="text" id="org-matricula" placeholder="Ej. ORG-001">
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" id="org-password" placeholder="••••••••">
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="btn-guardar" onclick="guardarOrganizador()">Guardar</button>
+                        <button class="btn-limpiar" onclick="limpiarFormularioOrganizador()">Limpiar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ ALUMNOS ══ -->
+        <section class="seccion" id="sec-alumnos">
+            <div class="panel-split">
+
+                <div class="panel-lista">
+                    <h3 class="panel-h3">📋 Alumnos registrados</h3>
+                    <div id="divListadoAlm"></div>
+                </div>
+
+                <div class="panel-form">
+                    <h3 class="panel-h3" id="form-alm-titulo">➕ Nuevo alumno</h3>
+                    <input type="hidden" id="idAlumno">
+
+                    <div class="form-group">
+                        <label>Nombre completo</label>
+                        <input type="text" id="alm-nombre" placeholder="Nombre del alumno">
+                    </div>
+                    <div class="form-group">
+                        <label>Correo</label>
+                        <input type="email" id="alm-correo" placeholder="correo@escuela.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Matrícula</label>
+                        <input type="text" id="alm-matricula" placeholder="Ej. 2024001">
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" id="alm-password" placeholder="••••••••">
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="btn-guardar" onclick="guardarAlumno()">Guardar</button>
+                        <button class="btn-limpiar" onclick="limpiarFormularioAlumno()">Limpiar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ REPORTES GLOBALES ══ -->
+        <section class="seccion" id="sec-reportes">
+
+            <!-- Tarjetas globales -->
+            <div class="reporte-resumen" id="stats-globales"></div>
+
+            <!-- Filtro por actividad -->
+            <div class="reportes-filtro">
+                <div class="form-group">
+                    <label>Ver detalle de actividad</label>
+                    <select id="reporte-actividad" onchange="generarReporte()"></select>
+                </div>
             </div>
 
+            <div id="reporte-container">
+                <p class="lista-hint">Selecciona una actividad para ver su detalle.</p>
+            </div>
 
-        </div>
-    </div>
+        </section>
 
+    </main>
+</div>
 
-    <script src="Scripts/db.js"></script>
-    <script src="Scripts/admin.js"></script>
-
-    <script>
-        inicializarDB();
-
-        // Validar acceso
-        const usuario = JSON.parse(localStorage.getItem("usuarioActual"));
-
-        if (!usuario || usuario.rol !== "administrador") {
-            alert("Acceso no autorizado");
-            window.location.href = "login.html";
-        }
-
-        // Cargar datos
-        cargarOrganizadores();
-        mostrarActividades();
-    </script>
+<script src="Scripts/db.js"></script>
+<script src="Scripts/admin.js"></script>
 
 </body>
-
 </html>

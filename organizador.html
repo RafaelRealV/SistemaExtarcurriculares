@@ -1,39 +1,109 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Panel Organizador</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrador · Sistema Escolar</title>
     <link rel="stylesheet" href="Estilos/Adminnistracion_styles.css">
 </head>
+
 <body>
 
-<header>
-    <h2>📋 Panel del Organizador</h2>
-    <a href="index.html">Inicio</a>
-</header>
+    <div class="admin-layout">
 
-<h3>Mis Actividades</h3>
-<div id="actividades"></div>
+        <!-- ═══ BARRA LATERAL ═══ -->
+        <aside class="sidebar">
 
-<h3>Inscritos</h3>
-<div id="inscritos"></div>
+            <div class="sidebar-logo">
+                <div class="logo-icon"><img src="img/logo Bordeado.png" alt=""></div>
+                <div>
+                    <span class="logo-text">Extracurriculares</span>
+                    <span class="logo-sub">Organizador</span>
+                </div>
+            </div>
 
-<script src="Scripts/db.js"></script>
-<script src="Scripts/organizador.js"></script>
+            <nav class="sidebar-nav">
+                <button class="snav-btn active" data-seccion="mis-actividades">
+                    <span>🏃</span>Mis actividades
+                </button>
+                <button class="snav-btn" data-seccion="lista">
+                    <span>✅</span> Tomar lista
+                </button>
+                <button class="snav-btn" data-seccion="reportes">
+                    <span>📊</span> Reportes
+                </button>
+            </nav>
 
-<script>
-inicializarDB();
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="su-avatar" id="sb-avatar">0</div>
+                    <div>
+                        <span class="su-nombre" id="sb-nombre">—</span>
+                        <span class="su-rol" id="sb-rol">Organizador</span>
+                    </div>
+                </div>
+                <button class="btn-logout-sb" onclick="cerrarSesion()">Salir →</button>
+            </div>
+        </aside>
 
-// Validar sesión
-const usuario = JSON.parse(localStorage.getItem("usuarioActual"));
+        <!-- ═══ CONTENIDO PRINCIPAL ═══ -->
+        <main class="admin-main">
 
-if (!usuario || usuario.rol !== "organizador") {
-    alert("Acceso no autorizado");
-    window.location.href = "login.html";
-}
+            <header class="admin-header">
+                <div>
+                    <h1 class="admin-titulo" id="titulo-seccion">Mis actividades</h1>
+                    <p class="admin-subtitulo" id="sub-seccion">Actividades que tienes asignadas</p>
+                </div>
+                <button class="btn-logout-header" onclick="cerrarSesion()">Cerrar sesión</button>
+            </header>
 
-cargarActividadesOrganizador();
-</script>
+            <!-- ══ ACTIVIDADES ══ -->
+            <section class="seccion active" id="sec-mis-actividades">
+                <div id="mis-actividades-grid" class="mis-act-grid"></div>
+            </section>
+
+            <!-- ══ TOMAR LISTA ══ -->
+            <section class="seccion" id="sec-lista">
+
+                <div class="lista-controles">
+                    <div class="form-group">
+                        <label>Actividad</label>
+                        <select id="lista-actividad" onchange="cargarAlumnosLista()"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha</label>
+                        <input type="date" id="lista-fecha" onchange="cargarAlumnosLista()">
+                    </div>
+                </div>
+
+                <div id="lista-container">
+                    <p class="lista-hint">Selecciona una actividad y una fecha para tomar lista.</p>
+                </div>
+
+            </section>
+
+            <!-- ══ REPORTES ══ -->
+            <section class="seccion" id="sec-reportes">
+
+                <div class="reportes-filtro">
+                    <div class="form-group">
+                        <label>Actividad</label>
+                        <select id="reporte-actividad" onchange="generarReporte()"></select>
+                    </div>
+                </div>
+
+                <div id="reporte-container">
+                    <p class="lista-hint">Selecciona una actividad para ver el reporte.</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="Scripts/db.js"></script>
+    <script src="Scripts/panel_organizador.js"></script>
 
 </body>
+
 </html>
