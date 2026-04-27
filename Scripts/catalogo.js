@@ -1,6 +1,4 @@
-/* =============================================
-   catalogo.js — Catálogo de actividades
-   ============================================= */
+
 
 let actividadesFiltradas = [];
 

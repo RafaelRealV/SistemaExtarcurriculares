@@ -1,5 +1,5 @@
 /**
- * Función para registrar un nuevo usuario
+ Función para registrar un nuevo usuario
  */
 function registrarUsuario() {
 

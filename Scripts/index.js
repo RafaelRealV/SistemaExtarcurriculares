@@ -1,6 +1,4 @@
-/* =============================================
-   index.js — Página de inicio
-   ============================================= */
+
 
 document.addEventListener("DOMContentLoaded", function () {
     cargarEstadisticas();
