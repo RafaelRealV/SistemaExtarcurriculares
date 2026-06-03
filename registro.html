@@ -2,35 +2,174 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Registro</title>
-    <link rel="stylesheet" href="Estilos/login_style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear cuenta · Sistema Escolar</title>
+    <link rel="stylesheet" href="Estilos/registro_style.css">
 </head>
 <body>
 
-<div class="divLogin">
+<!-- HEADER mínimo -->
+<header>
+    <a href="index.html" class="logo">
+        <div class="logo-icon">🌿</div>
+        <div>
+            <span class="logo-text">Extracurriculares</span>
+            <span class="logo-sub">Sistema Escolar</span>
+        </div>
+    </a>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="login.html" class="cta">Iniciar sesión</a>
+    </nav>
+</header>
 
-    <h2>Registro de Usuario</h2>
+<!-- LAYOUT DOS COLUMNAS -->
+<main class="registro-layout">
 
-    <input type="text" id="nombre" placeholder="Nombre completo">
-    <input type="email" id="correo" placeholder="Correo electrónico">
-    <input type="password" id="password" placeholder="Contraseña">
+    <!-- COLUMNA IZQUIERDA -->
+    <div class="registro-left">
+        <div class="deco-circle" style="width:280px;height:280px;top:-70px;right:-70px;"></div>
+        <div class="deco-circle" style="width:160px;height:160px;bottom:-50px;left:-50px;"></div>
 
-    <button onclick="registrarUsuario()">Registrarse</button>
+        <div class="left-content">
+            <div class="left-badge">✦ Únete hoy</div>
+            <h2>Empieza tu experiencia extracurricular</h2>
+            <p>Crea tu cuenta y accede a todas las actividades disponibles en tu escuela.</p>
 
-    
-    <p id="mensaje" class="error"></p>
+            <div class="features">
+                <div class="feat-item">
+                    <div class="feat-icon">🎯</div>
+                    <div>
+                        <strong>Elige tus actividades</strong>
+                        <span>Inscríbete en lo que más te apasione</span>
+                    </div>
+                </div>
+                <div class="feat-item">
+                    <div class="feat-icon">📋</div>
+                    <div>
+                        <strong>Seguimiento de asistencia</strong>
+                        <span>Consulta tu historial desde tu perfil</span>
+                    </div>
+                </div>
+                <div class="feat-item">
+                    <div class="feat-icon">🏆</div>
+                    <div>
+                        <strong>Desarrolla tu talento</strong>
+                        <span>Deportes, arte, ciencia y más</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <p>¿Ya tienes una cuenta?<a href="login.html"> Inicia sesión</a></p>
+    <!-- COLUMNA DERECHA — formulario -->
+    <div class="registro-right">
+        <div class="registro-box">
+            <h3>Crear cuenta</h3>
+            <p class="registro-sub">Solo para alumnos · Es gratis y toma un minuto</p>
 
-</div>
+            <!-- Pasos visuales -->
+            <div class="pasos">
+                <div class="paso active" id="paso-dot-1">1</div>
+                <div class="paso-linea"></div>
+                <div class="paso" id="paso-dot-2">2</div>
+                <div class="paso-linea"></div>
+                <div class="paso" id="paso-dot-3">✓</div>
+            </div>
+
+            <form id="form-registro" novalidate>
+
+                <!-- PASO 1: Datos personales -->
+                <div class="paso-panel active" id="paso-1">
+                    <p class="paso-label">Paso 1 — Datos personales</p>
+
+                    <div class="form-group">
+                        <label for="reg-nombre">Nombre completo</label>
+                        <input type="text" id="reg-nombre" placeholder="Ej. Luis Martínez García" autocomplete="name">
+                        <span class="input-error" id="err-nombre"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-matricula">Matrícula</label>
+                        <input type="text" id="reg-matricula" placeholder="Ej. 2024001234" autocomplete="off">
+                        <span class="input-hint">Tu número de matrícula escolar.</span>
+                        <span class="input-error" id="err-matricula"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-correo">Correo electrónico</label>
+                        <input type="email" id="reg-correo" placeholder="correo@escuela.com" autocomplete="email">
+                        <span class="input-error" id="err-correo"></span>
+                    </div>
+
+                    <button type="button" class="btn-siguiente" onclick="irPaso2()">
+                        Siguiente →
+                    </button>
+                </div>
+
+                <!-- PASO 2: Contraseña -->
+                <div class="paso-panel" id="paso-2">
+                    <p class="paso-label">Paso 2 — Crea tu contraseña</p>
+
+                    <div class="form-group">
+                        <label for="reg-password">Contraseña</label>
+                        <div class="input-pass-wrap">
+                            <input type="password" id="reg-password" placeholder="Mínimo 4 caracteres" autocomplete="new-password">
+                            <button type="button" class="toggle-pass" id="toggle-p1">👁</button>
+                        </div>
+                        <!-- Indicador de fortaleza -->
+                        <div class="strength-wrap" id="strength-wrap" style="display:none;">
+                            <div class="strength-bar">
+                                <div class="strength-fill" id="strength-fill"></div>
+                            </div>
+                            <span class="strength-label" id="strength-label"></span>
+                        </div>
+                        <span class="input-error" id="err-password"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-password2">Confirmar contraseña</label>
+                        <div class="input-pass-wrap">
+                            <input type="password" id="reg-password2" placeholder="Repite tu contraseña" autocomplete="new-password">
+                            <button type="button" class="toggle-pass" id="toggle-p2">👁</button>
+                        </div>
+                        <span class="input-error" id="err-password2"></span>
+                    </div>
+
+                    <div class="form-actions-2">
+                        <button type="button" class="btn-atras" onclick="irPaso1()">← Atrás</button>
+                        <button type="submit" class="btn-registrar" id="btn-registrar">Crear cuenta</button>
+                    </div>
+                </div>
+
+                <!-- PASO 3: Éxito -->
+                <div class="paso-panel" id="paso-3">
+                    <div class="exito-wrap">
+                        <div class="exito-icon">🎉</div>
+                        <h4 class="exito-titulo">¡Cuenta creada!</h4>
+                        <p class="exito-sub">Bienvenido, <strong id="exito-nombre">—</strong>. Ya puedes explorar las actividades disponibles.</p>
+                        <a href="catalogo.html" class="btn-ir-catalogo">Ver actividades →</a>
+                        <a href="login.html"    class="btn-ir-login">Iniciar sesión</a>
+                    </div>
+                </div>
+
+            </form>
+
+            <div class="divider"><span>¿Ya tienes cuenta?</span></div>
+            <p class="link-login">
+                <a href="login.html">Iniciar sesión aquí →</a>
+            </p>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    <p>© 2026 <span>Sistema Escolar</span> · Todos los derechos reservados</p>
+</footer>
 
 <script src="Scripts/db.js"></script>
-<script src="Scripts/auth.js"></script>
 <script src="Scripts/registro.js"></script>
-
-<script>
-inicializarDB();
-</script>
 
 </body>
 </html>
